@@ -6,6 +6,7 @@ const validateUserId = require("../middleware/validateUserId");
 const validateUser = require("../middleware/validateUsers");
 const validatePost = require("../middleware/validatePost");
 
+//done
 router.post("/", (req, res) => {
   const { body } = req;
 
@@ -14,11 +15,11 @@ router.post("/", (req, res) => {
   });
 });
 
-// WIP ↓
+//done
 router.post("/:id/posts", validateUserId, validatePost, (req, res) => {
   const { body } = req;
 
-  users.insert(body).then(addPost => {
+  posts.insert(body).then(addPost => {
     res.status(200).json(addPost);
   });
 });
@@ -47,7 +48,6 @@ router.get("/:id", validateUserId, (req, res) => {
     });
 });
 
-// was working but then decided not to ↓
 router.get("/:id/posts", validateUserId, validatePost, (req, res) => {
   const { id } = req.params;
   const { body } = req;
